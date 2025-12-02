@@ -30,7 +30,6 @@ const Header: React.FC = () => {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Check if click is outside both mobile menu AND mobile button
       if (
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(event.target as Node) &&
@@ -136,9 +135,9 @@ const Header: React.FC = () => {
             <div className="hidden lg:block">
               <motion.button
                 onClick={() => {
-                const section = document.getElementById("booking");
-                section?.scrollIntoView({ behavior: "smooth" });
-              }}
+                  const section = document.getElementById("booking");
+                  section?.scrollIntoView({ behavior: "smooth" });
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
@@ -152,10 +151,10 @@ const Header: React.FC = () => {
             </div>
 
             {/* Mobile Menu Button */}
-              <button
+            <button
               ref={mobileButtonRef}
               onClick={handleMobileMenuToggle}
-              className={`lg:hidden text-2xl p-2 rounded-lg transition-colors ${
+              className={`lg:hidden text-2xl p-2 mr-8 rounded-lg transition-colors ${
                 scrolled ? 'text-dark' : 'text-white'
               } ${isMobileMenuOpen ? 'bg-white/10' : ''}`}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -179,7 +178,7 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation*/}
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
@@ -188,43 +187,48 @@ const Header: React.FC = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="lg:hidden overflow-hidden w-full left-0 !mx-0"
+                className="lg:hidden overflow-hidden"
               >
-
-                <div className={`py-4 rounded-lg mt-2 ${
+                <div className={`py-4 mt-2 mr-[34px] rounded-lg ${
                   scrolled ? 'bg-white shadow-lg' : 'bg-white/10 backdrop-blur-md'
                 }`}>
-                  <div className="flex flex-col space-y-3 px-4">
+                  {/* Fixed mobile menu container */}
+                  <div className="flex flex-col">
                     {navItems.map((item) => (
                       <motion.a
                         key={item.href}
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`py-2 font-medium transition-colors text-base ${
-                          scrolled ? 'text-dark hover:text-primary' : 'text-white hover:text-primary'
+                        className={`py-3 px-4 font-medium transition-colors text-base border-b border-white/10 ${
+                          scrolled 
+                            ? 'text-dark hover:text-primary hover:bg-gray-50' 
+                            : 'text-white hover:text-primary hover:bg-white/5'
                         }`}
                         whileTap={{ scale: 0.98 }}
                       >
                         {item.label}
                       </motion.a>
                     ))}
-                    <motion.button 
-                      onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      const section = document.getElementById("booking");
-                      section?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                      className="mt-2 px-4 py-2 bg-primary text-primary-dark rounded-lg font-medium hover:bg-primary-dark hover:text-white transition-colors text-base"
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Book Now
-                    </motion.button>
+                    {/* Fixed button alignment */}
+                    <div className="px-4 pt-3">
+                      <motion.button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          const section = document.getElementById("booking");
+                          setTimeout(() => section?.scrollIntoView({ behavior: "smooth" }), 100);
+                        }}
+                        className="w-full px-4 py-3 bg-primary text-primary-dark rounded-lg font-medium hover:bg-primary-dark hover:text-white transition-colors text-base text-center"
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Book Now
+                      </motion.button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
-            </div>
+        </div>
       </motion.nav>
 
       {/* Background Slideshow */}
@@ -265,14 +269,14 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content - FIXED FOR MOBILE */}
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-4 md:mb-6"
+            className="mb-4 md:mb-6 flex justify-center md:justify-start"
           >
             <span className="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs md:text-sm font-medium">
               Simple - Unique - Friendly
@@ -283,10 +287,10 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 md:mb-8 leading-snug md:leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight text-center md:text-left"
           >
             Make Yourself At Home
-            <br />
+            <br className="hidden sm:block" />
             In Our{' '}
             <span className="text-primary relative inline-block">
               Hotel
@@ -299,42 +303,42 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 justify-center md:justify-start"
           >
             <motion.button
-            onClick={() => {
-            const section = document.getElementById("rooms");
-            section?.scrollIntoView({ behavior: "smooth" });
-          }}
+              onClick={() => {
+                const section = document.getElementById("rooms");
+                section?.scrollIntoView({ behavior: "smooth" });
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 md:px-8 md:py-3 bg-primary text-primary-dark font-semibold rounded-lg hover:bg-primary-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 text-sm md:text-base"
+              className="px-6 py-3 md:px-8 md:py-3.5 bg-primary text-primary-dark font-semibold rounded-lg hover:bg-primary-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 text-sm md:text-base"
             >
               Explore Rooms
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 md:px-8 md:py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-dark transition-all duration-300 hover:shadow-xl hover:shadow-white/20 text-sm md:text-base"
+              className="px-6 py-3 md:px-8 md:py-3.5 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-dark transition-all duration-300 hover:shadow-xl hover:shadow-white/20 text-sm md:text-base"
             >
               Watch Video Tour
             </motion.button>
           </motion.div>
 
-          {/* Hero Stats */}
+          {/* Hero Stats - FIXED FOR MOBILE */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="mt-8 md:mt-12 flex flex-wrap gap-6 md:gap-8"
+            className="mt-8 md:mt-12 flex flex-wrap justify-center md:justify-start gap-4 md:gap-8"
           >
             {[
               { value: '4.9', label: 'Guest Rating' },
               { value: '24/7', label: 'Room Service' },
               { value: '50+', label: 'Luxury Rooms' }
             ].map((stat, idx) => (
-              <div key={idx} className="text-white">
-                <div className="text-xl md:text-2xl font-bold">{stat.value}</div>
+              <div key={idx} className="text-white text-center md:text-left">
+                <div className="text-2xl md:text-3xl font-bold">{stat.value}</div>
                 <div className="text-xs md:text-sm opacity-80">{stat.label}</div>
               </div>
             ))}

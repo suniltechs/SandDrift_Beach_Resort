@@ -236,7 +236,7 @@ const About: React.FC = () => {
             >
               <p className="text-sm text-gray-700 mb-4">Trusted by travelers worldwide</p>
               <div className="flex flex-wrap items-center gap-6 opacity-70">
-                {['TripAdvisor', 'Booking.com', 'Expedia', 'Agoda'].map((brand, index) => (
+                {['TripAdvisor', 'Booking.com', 'Agoda'].map((brand, index) => (
                   <div key={index} className="text-lg font-semibold text-gray-600">
                     {brand}
                   </div>
