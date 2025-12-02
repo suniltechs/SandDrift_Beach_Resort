@@ -1,38 +1,53 @@
+// constants.ts
+
+export interface Room {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+  features: string[];
+}
+
 export const navItems = [
   { label: 'Home', href: '#home' },
-  { label: 'Booking', href: '#booking'},
+  { label: 'Booking', href: '#booking' },
   { label: 'About', href: '#about' },
-  { label: 'Rooms', href: '#rooms'},
+  { label: 'Rooms', href: '#rooms' },
   { label: 'Services', href: '#service' },
   { label: 'Explore', href: '#explore' },
   { label: 'Contact', href: '#contact' },
-  
 ];
 
-// In RoomCard.tsx, update the rooms array in constants.ts:
 export const rooms: Room[] = [
   {
     id: '1',
     title: 'Deluxe Ocean View',
-    description: 'Bask in luxury with breathtaking ocean views from your private suite.',
+    description:
+      'Bask in luxury with breathtaking ocean views from your private suite.',
     price: 2100,
-    image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image:
+      'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80',
     features: ['Ocean View', 'Free WiFi', 'Air Conditioning'],
   },
   {
     id: '2',
     title: 'Executive Cityscape Room',
-    description: 'Experience urban elegance and modern comfort in the heart of the city.',
+    description:
+      'Experience urban elegance and modern comfort in the heart of the city.',
     price: 2427,
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image:
+      'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80',
     features: ['City View', 'Work Desk', 'Mini Bar'],
   },
   {
     id: '3',
     title: 'Family Garden Retreat',
-    description: 'Spacious and inviting, perfect for creating cherished memories with loved ones.',
+    description:
+      'Spacious and inviting, perfect for creating cherished memories with loved ones.',
     price: 2900,
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image:
+      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
     features: ['Garden View', 'Family Suite', 'Kitchenette'],
   },
 ];

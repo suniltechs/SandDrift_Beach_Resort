@@ -17,7 +17,8 @@ const InputField: React.FC<InputFieldProps> = ({
   id,
   ...props
 }) => {
-  const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
+  const inputId =
+    id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
   return (
     <div className={`space-y-2 ${containerClass}`}>
@@ -29,14 +30,17 @@ const InputField: React.FC<InputFieldProps> = ({
           {label}
         </label>
       )}
+
       <div className="relative">
         {icon && (
-          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary">
             {icon}
           </div>
         )}
+
         <motion.input
-          whileFocus={{ scale: 1.01 }}
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
           id={inputId}
           className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all duration-300 ${
             icon ? 'pl-10' : ''
@@ -44,9 +48,10 @@ const InputField: React.FC<InputFieldProps> = ({
           {...props}
         />
       </div>
+
       {error && (
         <motion.p
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-sm text-red-500"
         >
