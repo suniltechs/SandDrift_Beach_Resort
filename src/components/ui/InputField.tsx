@@ -15,7 +15,6 @@ const InputField: React.FC<InputFieldProps> = ({
   containerClass = '',
   className = '',
   id,
-  ...props
 }) => {
   const inputId =
     id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
@@ -45,7 +44,6 @@ const InputField: React.FC<InputFieldProps> = ({
           className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all duration-300 ${
             icon ? 'pl-10' : ''
           } ${error ? 'border-red-500' : 'border-gray-200'} ${className}`}
-          {...props}
         />
       </div>
 
