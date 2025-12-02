@@ -1,3 +1,5 @@
+// Header.tsx
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navItems } from '../../utils/constants';
@@ -81,6 +83,25 @@ const Header: React.FC = () => {
   // Handle mobile menu toggle
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Handle navigation click for mobile menu
+  const handleMobileNavClick = (href: string) => {
+    // Close the mobile menu
+    setIsMobileMenuOpen(false);
+    
+    // Find the target element
+    const targetElement = document.querySelector(href);
+    
+    if (targetElement) {
+      // Small delay to allow menu to close and DOM to update
+      setTimeout(() => {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }
   };
 
   return (
@@ -195,11 +216,10 @@ const Header: React.FC = () => {
                   {/* Fixed mobile menu container */}
                   <div className="flex flex-col">
                     {navItems.map((item) => (
-                      <motion.a
+                      <motion.button
                         key={item.href}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`py-3 px-4 font-medium transition-colors text-base border-b border-white/10 ${
+                        onClick={() => handleMobileNavClick(item.href)}
+                        className={`py-3 px-4 font-medium transition-colors text-base border-b border-white/10 text-left ${
                           scrolled 
                             ? 'text-dark hover:text-primary hover:bg-gray-50' 
                             : 'text-white hover:text-primary hover:bg-white/5'
@@ -207,15 +227,13 @@ const Header: React.FC = () => {
                         whileTap={{ scale: 0.98 }}
                       >
                         {item.label}
-                      </motion.a>
+                      </motion.button>
                     ))}
                     {/* Fixed button alignment */}
                     <div className="px-4 pt-3">
                       <motion.button
                         onClick={() => {
-                          setIsMobileMenuOpen(false);
-                          const section = document.getElementById("booking");
-                          setTimeout(() => section?.scrollIntoView({ behavior: "smooth" }), 100);
+                          handleMobileNavClick('#booking');
                         }}
                         className="w-full px-4 py-3 bg-primary text-primary-dark rounded-lg font-medium hover:bg-primary-dark hover:text-white transition-colors text-base text-center"
                         whileTap={{ scale: 0.98 }}
