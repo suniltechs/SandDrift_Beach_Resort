@@ -61,8 +61,8 @@ const About: React.FC = () => {
               className="relative rounded-3xl overflow-hidden shadow-2xl"
             >
               <img
-                src="https://images.unsplash.com/photo-1562790351-d273a961e0e9?auto=format&fit=crop&w=1200&q=80"
-                alt="Hotel Golden Sand Lobby"
+                src="https://images.unsplash.com/photo-1581859814481-bfd944e3122f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="SunDrift Lobby"
                 className="w-full h-[650px] object-cover"
               />
               {/* Gradient Overlay */}

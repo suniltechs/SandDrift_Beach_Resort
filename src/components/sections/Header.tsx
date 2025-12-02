@@ -107,7 +107,7 @@ const Header: React.FC = () => {
             >
               <img
                 src="/assets/sundrift.png"
-                alt="Hotel Golden Sand"
+                alt="SunDrift Beach Resort"
                 className={`h-10 md:h-12 w-auto transition-all duration-300 ${
                   scrolled ? 'filter brightness-0' : ''
                 }`}

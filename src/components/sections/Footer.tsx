@@ -90,8 +90,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 mb-8">
               <li className="flex items-center space-x-3">
                 <RiMailFill className="text-primary text-xl" />
-                <a href="mailto:sanddrift@gmail.com" className="text-gray-300 hover:text-primary transition-colors">
-                  sanddrift@gmail.com
+                <a href="mailto:sundrift@gmail.com" className="text-gray-300 hover:text-primary transition-colors">
+                  sundrift@gmail.com
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <RiMapPinFill className="text-primary text-xl" />
-                <span className="text-gray-300">SandDrift Beach Resort, JBR, The Walk, Dubai </span>
+                <span className="text-gray-300">SunDrift Beach Resort, JBR, The Walk, Dubai </span>
               </li>
             </ul>
 
@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
           className="mt-16 pt-8 border-t border-gray-700 text-center"
         >
           <p className="text-gray-400">
-            Copyright © {currentYear} Golden Sand. All rights reserved.
+            Copyright © {currentYear} SunDrift. All rights reserved.
           </p>
         </motion.div>
       </div>

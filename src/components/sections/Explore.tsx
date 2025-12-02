@@ -303,7 +303,7 @@ const Explore: React.FC = () => {
                 <RiSendPlane2Line className="text-lg" />
               </motion.button>
             </div>
-            <p className="text-white/60 text-sm mt-4">
+            <p className="text-white text-sm mt-4">
               By subscribing, you agree to our Privacy Policy
             </p>
           </form>
