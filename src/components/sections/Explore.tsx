@@ -1,57 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  RiRestaurantLine, 
-  RiCalendarEventLine, 
-  RiSparkling2Line,
-  RiArrowRightLine,
-  RiFireLine,
-  RiLeafLine,
-  RiCupLine,
-  RiPlayCircleLine
-} from 'react-icons/ri';
+import { EXPLORE_CARDS } from '../../utils/constants';
+import { RiCalendarEventLine, RiSparkling2Line, RiArrowRightLine, RiFireLine, RiPlayCircleLine } from 'react-icons/ri';
 import { PiChefHatBold } from 'react-icons/pi';
 import { RiSendPlane2Line } from 'react-icons/ri';
-
-
-const EXPLORE_CARDS = [
-  {
-    id: '1',
-    title: 'New Gourmet Menu',
-    category: 'Culinary',
-    date: 'DEC 10, 2024',
-    description: 'Experience our newly curated culinary delights crafted by master chefs with locally sourced ingredients',
-    features: ['Seafood Special', 'Vegan Options', 'Local Cuisine', 'Dessert Bar'],
-    icon: RiRestaurantLine,
-    color: 'from-amber-500/20 to-amber-600/20',
-    iconColor: 'text-amber-500',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: '2',
-    title: 'Wellness Retreat',
-    category: 'Wellness',
-    date: 'JAN 15, 2025',
-    description: 'Join our exclusive wellness program featuring yoga, meditation, and spa treatments',
-    features: ['Morning Yoga', 'Meditation', 'Spa Packages', 'Nutrition'],
-    icon: RiLeafLine,
-    color: 'from-amber-500/20 to-amber-600/20',
-    iconColor: 'text-amber-500',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: '3',
-    title: 'Mixology Workshop',
-    category: 'Entertainment',
-    date: 'JAN 22, 2025',
-    description: 'Learn cocktail crafting from our expert mixologists in an interactive workshop',
-    features: ['Cocktail Making', 'Wine Tasting', 'Expert Tips', 'Take-home Recipes'],
-    icon: RiCupLine,
-    color: 'from-amber-500/20 to-amber-600/20',
-    iconColor: 'text-amber-500',
-    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80'
-  }
-];
 
 const Explore: React.FC = () => {
   const [activeCard, setActiveCard] = useState(0);
