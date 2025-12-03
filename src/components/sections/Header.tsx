@@ -175,7 +175,7 @@ const Header: React.FC = () => {
             <button
               ref={mobileButtonRef}
               onClick={handleMobileMenuToggle}
-              className={`lg:hidden text-2xl p-2 mr-8 rounded-lg transition-colors ${
+              className={`lg:hidden text-2xl p-2 rounded-lg transition-colors ${
                 scrolled ? 'text-dark' : 'text-white'
               } ${isMobileMenuOpen ? 'bg-white/10' : ''}`}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -210,7 +210,7 @@ const Header: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="lg:hidden overflow-hidden"
               >
-                <div className={`py-4 mt-2 mr-[34px] rounded-lg ${
+                <div className={`py-4 mt-2 rounded-lg ${
                   scrolled ? 'bg-white shadow-lg' : 'bg-white/10 backdrop-blur-md'
                 }`}>
                   {/* Fixed mobile menu container */}
