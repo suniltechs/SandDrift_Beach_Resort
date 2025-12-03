@@ -1,5 +1,3 @@
-// Header.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navItems } from '../../utils/constants';
@@ -12,7 +10,7 @@ const BACKGROUND_IMAGES = [
   'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=2070&q=80'
 ];
 
-const Header: React.FC = () => {
+const Hero: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const [scrolled, setScrolled] = useState(false);
@@ -410,4 +408,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default Hero;
