@@ -15,4 +15,6 @@ export interface BookingRequest {
   adults: number;
   children: number;
   roomId?: string;
+  roomType: string;  
+  roomPrice: number;
 }
