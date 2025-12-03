@@ -203,7 +203,7 @@ const About: React.FC = () => {
                   {[
                     { value: '15', suffix: '+', label: 'Years Excellence' },
                     { value: '98', suffix: '%', label: 'Guest Satisfaction' },
-                    { value: '4.9', suffix: '/5', label: 'Rating' }
+                    { value: '4.9', suffix: '/5', label: 'Guest Rating' }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
