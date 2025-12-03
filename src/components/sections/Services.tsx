@@ -1,61 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  RiShieldStarLine,
-  Ri24HoursLine,
-  RiWifiFill,
-  RiRoadsterFill,
-  RiSparkling2Line,
-  RiArrowRightLine,
-} from "react-icons/ri";
-
-const servicesData = [
-  {
-    id: "1",
-    title: "High Class Security",
-    icon: RiShieldStarLine,
-    description:
-      "Advanced surveillance systems and 24/7 security personnel ensuring your complete safety.",
-    features: [
-      "CCTV Monitoring",
-      "Security Personnel",
-      "Safe Deposit Boxes",
-      "Emergency Response",
-    ],
-    color: "from-amber-500/20 to-amber-600/20",
-    iconColor: "text-amber-500",
-  },
-  {
-    id: "2",
-    title: "24/7 Room Service",
-    icon: Ri24HoursLine,
-    description:
-      "Round-the-clock dining and concierge service for ultimate convenience whenever you need it.",
-    features: ["All-day Dining", "In-room Dining", "Concierge Service", "Quick Response"],
-    color: "from-amber-500/20 to-amber-600/20",
-    iconColor: "text-amber-500",
-  },
-  {
-    id: "3",
-    title: "High-Speed WiFi",
-    icon: RiWifiFill,
-    description:
-      "Ultra-fast fiber optic internet connectivity available throughout the entire property.",
-    features: ["Fiber Optic", "Multiple Devices", "Business Center", "Tech Support"],
-    color: "from-amber-500/20 to-amber-600/20",
-    iconColor: "text-amber-500",
-  },
-  {
-    id: "4",
-    title: "Valet Parking",
-    icon: RiRoadsterFill,
-    description:
-      "Secure valet and self-parking facilities with EV charging stations for modern convenience.",
-    features: ["Valet Service", "EV Charging", "Car Wash", "24/7 Access"],
-    color: "from-amber-500/20 to-amber-600/20",
-    iconColor: "text-amber-500",
-  },
-];
+import { servicesData, services } from '../../utils/constants';
+import { RiSparkling2Line, RiArrowRightLine} from "react-icons/ri";
 
 const Services: React.FC = () => {
   return (
@@ -211,12 +157,7 @@ const Services: React.FC = () => {
           className="mt-20"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: "99%", label: "Guest Satisfaction" },
-              { value: "24/7", label: "Service Availability" },
-              { value: "<15min", label: "Average Response Time" },
-              { value: "50+", label: "Service Categories" },
-            ].map((stat, index) => (
+            {services.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
