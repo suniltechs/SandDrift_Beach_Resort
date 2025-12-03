@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { AnimatePresence } from 'framer-motion';
-import Header from './components/sections/Header';
+import Hero from './components/sections/Hero';
 import BookingForm from './components/sections/BookingForm';
 import About from './components/sections/About';
 import Rooms from './components/sections/Rooms';
@@ -15,7 +15,7 @@ function App() {
     <Provider store={store}>
       <AnimatePresence mode="wait">
         <div className="min-h-screen bg-white font-poppins">
-          <Header />
+          <Hero />
           <main>
             <BookingForm />
             <About />
