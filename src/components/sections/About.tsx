@@ -1,12 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  RiAwardFill, 
-  RiMapPinFill, 
-  RiShieldCheckFill,
-  RiSparkling2Line,
-  RiStarFill 
-} from 'react-icons/ri';
+import { features } from '../../utils/constants';
+import { RiAwardFill, RiSparkling2Line} from 'react-icons/ri';
 import Button from '../ui/Button';
 
 const About: React.FC = () => {
@@ -122,28 +117,7 @@ const About: React.FC = () => {
           >
             {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: RiMapPinFill,
-                  title: 'Prime Location',
-                  description: 'Minutes from Basilica & beach'
-                },
-                {
-                  icon: RiShieldCheckFill,
-                  title: 'Premium Security',
-                  description: '24/7 surveillance & safety'
-                },
-                {
-                  icon: RiStarFill,
-                  title: '5-Star Service',
-                  description: 'Personalized guest experience'
-                },
-                {
-                  icon: RiAwardFill,
-                  title: 'Award Winning',
-                  description: 'Recognized excellence in work'
-                }
-              ].map((feature, index) => (
+              {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -203,7 +177,7 @@ const About: React.FC = () => {
                   {[
                     { value: '15', suffix: '+', label: 'Years Excellence' },
                     { value: '98', suffix: '%', label: 'Guest Satisfaction' },
-                    { value: '4.9', suffix: '/5', label: 'Guest Rating' }
+                    { value: '4.9', suffix: '/5', label: 'Rating' }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
