@@ -11,7 +11,7 @@ import Button from '../ui/Button';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="relative py-20 bg-yellow-50">
+    <section id="about" className="relative min-h-screen overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
