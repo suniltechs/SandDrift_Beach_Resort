@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { roomTypes } from '../../utils/constants';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateFormData, submitBooking } from '../../features/booking/bookingSlice';
 import { 
@@ -12,19 +13,13 @@ import {
   RiShieldCheckLine
 } from 'react-icons/ri';
 
-const roomTypes = [
-  { id: 'standard', name: 'Standard Room', price: 2100 },
-  { id: 'deluxe', name: 'Deluxe Suite', price: 2900 },
-  { id: 'executive', name: 'Executive Suite', price: 3800 },
-  { id: 'presidential', name: 'Presidential Suite', price: 5500 },
-];
+
 
 const BookingForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const { formData, isLoading } = useAppSelector((state) => state.booking);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [selectedRoom, setSelectedRoom] = useState<string>('standard');
-  const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleInputChange = (field: keyof typeof formData, value: string | number) => {
     dispatch(updateFormData({ [field]: value }));
@@ -52,10 +47,10 @@ const BookingForm: React.FC = () => {
       try {
         await dispatch(submitBooking({
           ...formData,
+          roomType: selectedRoom,
+          roomPrice: roomTypes.find(r => r.id === selectedRoom)?.price || 0
         })).unwrap();
-        // Success handled elsewhere
       } catch (error) {
-        // Error handled by Redux
       }
     }
   };
@@ -105,24 +100,14 @@ const BookingForm: React.FC = () => {
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
             {/* Card Header */}
             <div className="p-8 border-b border-gray-100">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl">
-                    <RiHotelBedLine className="text-2xl text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-dark">Reservation Details</h3>
-                    <p className="text-gray-600">Select your dates and preferences</p>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl">
+                  <RiHotelBedLine className="text-2xl text-primary" />
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setShowAdvanced(!showAdvanced)}
-                  className="px-4 py-2 text-primary-dark font-medium rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  {showAdvanced ? 'Simple View' : 'Advanced Options'}
-                </motion.button>
+                <div>
+                  <h3 className="text-2xl font-bold text-dark">Reservation Details</h3>
+                  <p className="text-gray-600">Select your dates and preferences</p>
+                </div>
               </div>
             </div>
 
@@ -305,44 +290,6 @@ const BookingForm: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Advanced Options */}
-                {showAdvanced && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
-                    className="pt-6 border-t border-gray-100"
-                  >
-                    <h4 className="text-lg font-semibold text-dark mb-4">Additional Preferences</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Bed Type</label>
-                        <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl outline-none">
-                          <option>King Bed</option>
-                          <option>Queen Bed</option>
-                          <option>Twin Beds</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Room View</label>
-                        <select className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl outline-none">
-                          <option>Ocean View</option>
-                          <option>Garden View</option>
-                          <option>City View</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Special Requests</label>
-                        <input
-                          type="text"
-                          placeholder="Any special requirements?"
-                          className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl outline-none"
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
                 {/* Submit Button */}
                 <div className="pt-8 border-t border-gray-100">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -381,7 +328,6 @@ const BookingForm: React.FC = () => {
           </div>
         </motion.div>
       </div>
-
     </section>
   );
 };
