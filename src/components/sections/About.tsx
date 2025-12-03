@@ -6,7 +6,7 @@ import Button from '../ui/Button';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="relative min-h-screen overflow-hidden">
+    <section id="about" className="relative min-h-screen bg-yellow-50 overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
